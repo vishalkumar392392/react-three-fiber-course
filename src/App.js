@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Scene } from "./Scene";
+import { Perf } from "r3f-perf";
 
 const App = () => {
   return (

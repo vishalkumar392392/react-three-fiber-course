@@ -1,20 +1,27 @@
-import { useLoader } from "@react-three/fiber";
-import React from "react";
-import * as THREE from "three";
-import { OrbitControls } from "@react-three/drei";
-import { Particles } from "./Particles";
-// extend({ OrbitControls: OrbitControls });
+import React, { Suspense } from "react";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import { ThreeDModel } from "./3DModel";
+import { Bike } from "./Bike";
+import { Perf } from "r3f-perf";
 
 export const Scene = () => {
-  const texture = useLoader(THREE.TextureLoader, "./img/1.png");
   return (
     <>
-      {/* <OrbitControls /> */}
-      {/* <mesh>
-        <circleGeometry args={[3, 128]} />
-        <meshBasicMaterial side={THREE.DoubleSide} map={texture} />
-      </mesh> */}
-      <Particles />
+      <Perf />
+
+      <OrbitControls />
+      <ambientLight intensity={2} />
+      <Suspense
+        fallback={
+          <mesh>
+            <boxBufferGeometry />
+            <meshBasicMaterial wireframe />
+          </mesh>
+        }
+      >
+        <ThreeDModel />
+      </Suspense>
+      {/* <Bike scale={0.85} position={[-0.5, 0.75, 0]} /> */}
     </>
   );
 };
