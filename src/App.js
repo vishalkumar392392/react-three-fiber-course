@@ -16,9 +16,10 @@ const App = () => {
       // }}
       onCreated={(state) => state.gl.setClearColor("grey", 0.5)}
     >
-      <axesHelper />
-      <gridHelper />
+      {/* <axesHelper />
+      <gridHelper /> */}
       <Scene />
+      {/* <Particles /> */}
     </Canvas>
   );
 };
